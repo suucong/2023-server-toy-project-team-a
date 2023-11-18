@@ -1,0 +1,39 @@
+#server
+server:
+  port: 10000
+
+#jdbc
+spring:
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: hr
+    password: hr
+
+  #jpa
+  jpa:
+    hibernate:
+      #    ddl-auto: create #DROP 후 CREATE
+      #    ddl-auto: create-drop #DROP 후 CREATE 후 DML 사용 시 DROP
+      ddl-auto: create #Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
+      #    ddl-auto: validate #Entity와 DB 스키마 비교 후 불일치 시 오류
+
+    #jpa format
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+
+  #log
+  output:
+    ansi:
+      enabled: always
+
+
+
+# key? 32byte (256bit)
+jwt:
+  secretKey: 12345678901234567890123456789012
+  refreshKey: 12345678901234567890123456789012

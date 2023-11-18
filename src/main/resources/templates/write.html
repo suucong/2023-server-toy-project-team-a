@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleag.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 작성</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/write.css">
+
+<!--    <link rel="icon" href="/images/favicon.ico">-->
+</head>
+<body>
+<div class="write-container">
+    <header>
+        <!-- Include your header content here -->
+    </header>
+    <section>
+        <form id="post-form" th:action="@{/posts/write}" method="post" th:object="${postSaveRequestDto}">
+            <input type="hidden" name="user">
+            <div class="write-wrap">
+                <div class="mb-3">
+                    <label for="post-title">제목</label>
+                    <input th:field="*{postTitle}" type="text" class="form-control" id="post-title" name="postTitle" placeholder="제목을 입력해주세요">
+                </div>
+
+                <div class="mb-3">
+                    <label for="post-content">내용</label>
+                    <textarea th:field="*{postContent}" class="form-control content-area" id="post-content" name="postContent" placeholder="내용을 입력해주세요"></textarea>
+                </div>
+                <div class="post-btn-container">
+                    <button type="submit" class="btn btn-primary register-btn" style="background-color: rgb(255, 79, 50); border-color: rgb(255, 79, 50); " >게시글 등록</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/write.js"></script>
+</html>

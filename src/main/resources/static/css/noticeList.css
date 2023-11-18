@@ -1,0 +1,376 @@
+@charset "UTF-8";
+
+/* 페이지 메인 부분 태그 */
+.css-2b29tl {
+    position: relative;
+    min-width: 1050px;
+}
+
+ul {
+    padding-inline-start: 0px !important;
+}
+
+/* 좌측 고객센터 메뉴창 및 게시글 부분 태그 */
+.css-luwwab {
+    display: flex;
+    width: 1050px;
+    padding: 50px 0px 80px;
+    margin: 0px auto;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+/* 좌측 고객센터 부분 태그 */
+
+.css-833hqy {
+    width: 200px;
+}
+/* '고객센터' 텍스트 */
+.css-1v4whg {
+    height: 75px;
+    padding: 5px 0 35px 1px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+/* 고객센터 메뉴창 ul 태그 */
+.css-1x9bshx {
+    border: 1px solid #f2f2f2;
+}
+
+/* 고객센터 메뉴창 ul 태그 */
+ul {
+    list-style-type: none !important;
+    margin-block-start: 0 !important;
+}
+
+/* 고객센터 메뉴창 각 li에 적용되는 스타일 */
+.css-g4g0eu {
+    cursor: pointer;
+    border-bottom: 1px solid rgb(242, 242, 242);
+    padding: 15px 13px 15px 20px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    line-height: 19px;
+    letter-spacing: -0.3px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+}
+
+/* 고객센터 -> 메뉴창 '공지사항'의 a태그 스타일 */
+.css-g4g0eu.active, .css-g4g0eu:hover {
+    background-color: rgb(250, 250, 250);
+    color: rgb(95, 0, 128);
+    font-weight: 500;
+}
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 용도 모름. 주석 보류 */
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* 1:1 문의하기 컨테이너 */
+.css-196gwz9 {
+    width: 100%;
+    height: 60px;
+    padding: 0px 14px 0px 20px;
+    margin-top: 0;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(250, 250, 250);
+    line-height: 20px;
+}
+
+/* 1:1 문의하기 컨테이너 내부 flex하기 */
+.css-rmee6s {
+    display: flex;
+    flex-direction: column;
+    color: rgb(51, 51, 51);
+}
+
+/* "도움이 필요하신가요?" */
+.css-1sdidca {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* "1:1 문의하기" */
+.css-rnnx2x {
+    font-size: 12px;
+}
+
+/* 게시판 구역 너비 */
+.css-171zbec {
+    width: 820px;
+}
+
+/* 상단 '공지사항' 파트 스타일 적용 */
+.css-j0lifa {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 27px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+
+/* 상단 '공지사항' 컨테이너 내부 텍스트 스타일 적용 */
+.css-fhxb3m {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* 상단 '공지사항' */
+.css-1268zpe {
+    font-weight: 500;
+    font-size: 24px;
+    color: rgb(51, 51, 51);
+    letter-spacing: -0.5px;
+    line-height: 48px;
+}
+
+/* 게시판 목록 상단 "이츠타임의 새로운 소식들과 유용한 정보들을 한곳에서 확인하세요" */
+.css-a3vgo2 {
+    padding-left: 11px;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+    color: rgb(153, 153, 153);
+    line-height: 20px;
+}
+
+/* 번호, 제목, 작성자, 작성일 컨테이너 */
+.css-e23nfx {
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(51, 51, 51);
+    border-top: 2px solid rgb(51, 51, 51);
+}
+
+/* 번호 */
+.css-mbsaqp {
+    flex-basis: 50px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+}
+
+/* 제목 */
+.css-1ym8aqm {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+}
+
+/* 작성자, 작성일 */
+.css-16tcewl {
+    flex-basis: 100px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+}
+
+/* 게시글 목록 ul태그 */
+.css-1fttcpj {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+/* 게시글 목록 ul>li 태그 내부 스타일 */
+.css-14yglsw {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+/* 게시글 번호 표기된 곳 */
+.css-3o6rrk {
+    text-align: center;
+    padding: 20px 0px;
+    color: rgb(76, 76, 76);
+    flex-basis: 50px;
+}
+
+/* 제목 표기된 곳 */
+.css-fzefrb {
+    padding: 20px 0px 20px 20px;
+    color: rgb(76, 76, 76);
+    flex: 1 1 0%;
+    text-align: left;
+}
+
+/* 작성자 표기된 곳 */
+.css-3d2kks {
+    text-align: center;
+    padding: 20px 0px;
+    color: rgb(76, 76, 76);
+    flex-basis: 100px;
+}
+
+/* 작성날짜 표기된 곳 */
+.css-b1hszl {
+    text-align: center;
+    padding: 20px 0px;
+    flex-basis: 100px;
+    color: rgb(153, 153, 153);
+}
+
+/* 게시판 앞/뒤로 가기 파트 컨테이너 */
+.css-1kbzkwh {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 60px 0px 30px;
+}
+
+/* '이전' 버튼 스타일 */
+.css-rzcdhr {
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* '이전' */
+.css-7qb0sc {
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+}
+
+.css-sxxs1g button + button {
+    margin-left: 12px;
+}
+
+/* '다음' 버튼 */
+.css-1jwilit {
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 우측 고정바 컨테이너  */
+.css-2bdgy6 {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    bottom: -216px;
+    z-index: 1;
+    margin-top: 216px;
+}
+
+/* 우측 고정바 */
+.css-18f2sbi {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgb(51, 51, 51);
+    letter-spacing: -0.3px;
+}
+
+/* 샛별/택배 배송 안내 */
+.css-4bo7sl {
+    height: 120px;
+    margin-bottom: 7px;
+}
+
+/* 등급별 혜택, 레시피 */
+.css-4bo7sl {
+    height: 120px;
+    margin-bottom: 7px;
+}
+
+/* 최근 본 상품 컨테이너 */
+.css-1uaq400 {
+    margin-top: 8px;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: 500;
+}
+
+/* 최근 본 상품 내부 부분 */
+.css-1f97cpw {
+    max-height: 209px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+/* 최근 본 상품 ul 리스트 태그 */
+.css-8erlkd {
+    position: relative;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: top 0.2s ease 0s;
+}
+
+/* 최근 본 상품 사진 ul>li a태그 */
+.css-4obgpv {
+    display: block;
+    height: 80px;
+    margin: 2px 0px;
+}
+

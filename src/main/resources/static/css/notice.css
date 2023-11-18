@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/* 페이지 메인 파트 */
+.css-1i60c0e {
+    width: 1050px;
+    margin: 0 auto;
+}
+
+/* 메인 상단부 '공지사항' 파트 컨테이너 */
+.css-1uvp5r6 {
+    width: 100%;
+    padding: 50px 0px;
+}
+
+/* '공지사항' */
+.css-qwe8mt {
+    font-weight: 700;
+    font-size: 28px;
+    color: rgb(51, 51, 51);
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+/* '공지사항' 아래 안내문구 */
+.css-1funedv {
+    margin-top: 5px;
+    color: rgb(153, 153, 153);
+    line-height: 20px;
+    letter-spacing: -0.1px;
+    text-align: center;
+}
+
+/* 게시글 컨테이너 */
+.css-1t45bai {
+    margin-top: 20px;
+    border-top: 2px solid rgb(51, 51, 51);
+    color: rgb(51, 51, 51);
+}
+
+
+/* 제목/작성자/작성일 컨테이너 */
+.css-1dhg94g {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+/* 제목/작성자/작성일 */
+.css-1xrh39a {
+    width: 130px;
+    padding: 13px 0px 13px 20px;
+    background-color: rgb(247, 245, 248);
+    border-top: 1px solid rgb(244, 244, 244);
+    text-align: left;
+    font-weight: 500;
+}
+
+/* 제목/작성자/작성일 상세내용 */
+.css-8vgw34 {
+    padding-left: 25px;
+    align-self: center;
+}
+
+/* 게시글 상세 내용 파트 */
+.css-1xvp3jp {
+    padding: 30px 10px 100px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+/* '목록' 버튼 파트 컨테이너 */
+.css-d7qwpj {
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+
+/* '목록' 버튼 */
+.css-214ym4 {
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 150px;
+    height: 42px;
+    border-radius: 0px;
+    color: rgb(255, 255, 255);
+    background-color: #ff4f32;
+    border: 0px none;
+}
+
+/* '목록' 폰트사이즈 */
+.css-d7qwpj span {
+    font-size: 13px;
+}
+
+/* '목록' 폰트 두께 */
+.css-ymwvow {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#wishlist-btn .withIcon_icon__3VTbq.selected path {
+    fill: #fe3636;
+}
