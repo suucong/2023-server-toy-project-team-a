@@ -3,7 +3,11 @@ package com.example.teama.controller;
 import com.example.teama.dto.post.PostResponseDto;
 import com.example.teama.dto.post.PostSaveRequestDto;
 import com.example.teama.dto.post.PostUpdateRequestDto;
+import com.example.teama.entity.User;
+import com.example.teama.jwt.util.IfLogin;
+import com.example.teama.jwt.util.LoginUserDto;
 import com.example.teama.service.PostService;
+import com.example.teama.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +19,7 @@ import java.util.List;
 //@RequestMapping("/posts/*")
 public class PostController {
     private final PostService postService;
+    private final UserService userService;
 
 //    @GetMapping("write")
 //    public void goToWriteForm(){
@@ -31,14 +36,27 @@ public class PostController {
 
     // Save Post
     @PostMapping("/api/v1/post")
-    public Long savePost(@RequestBody PostSaveRequestDto requestDto) {
-        return postService.save(requestDto);
+    public Long savePost(@IfLogin LoginUserDto loginUserDto, @RequestBody PostSaveRequestDto requestDto) {
+        try {
+            User user = userService.findByEmail(loginUserDto.getUserEmail());
+            requestDto.setUser(user);
+
+            return postService.save(requestDto);
+        } catch (IllegalArgumentException e) {  // 해당 사용자가 없는 경우 post가 저장되지 않도록
+            return -1L;
+        }
     }
 
     // Update Post
     @PutMapping("/api/v1/post/{id}")
-    public Long updatePost(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
-        return postService.update(id, requestDto);
+    public Long updatePost(@IfLogin LoginUserDto loginUserDto, @PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
+        try {
+            User user = userService.findByEmail(loginUserDto.getUserEmail());
+
+            return postService.update(id, requestDto);
+        } catch (IllegalArgumentException e) {  // 해당 사용자가 없는 경우 post가 수정되지 않도록
+            return -1L;
+        }
     }
 
     // Read Post
@@ -55,9 +73,14 @@ public class PostController {
 
     // Delete Post
     @DeleteMapping("/api/v1/post/{postId}")
-    public Long deletePost(@PathVariable Long postId) {
-        postService.delete(postId);
+    public Long deletePost(@IfLogin LoginUserDto loginUserDto, @PathVariable Long postId) {
+        try {
+            User user = userService.findByEmail(loginUserDto.getUserEmail());
 
-        return postId;
+            postService.delete(postId);
+            return postId;
+        } catch (IllegalArgumentException e) {  // 해당 사용자가 없는 경우 post가 삭제되지 않도록
+            return -1L;
+        }
     }
 }

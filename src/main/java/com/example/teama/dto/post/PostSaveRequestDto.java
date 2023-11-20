@@ -4,8 +4,9 @@ import com.example.teama.entity.Post;
 import com.example.teama.entity.User;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Setter
 @NoArgsConstructor
 public class PostSaveRequestDto {
     private User user;
