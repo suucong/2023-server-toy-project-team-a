@@ -1,6 +1,5 @@
 package com.example.teama.jwt.filter;
 
-
 import com.example.teama.jwt.exception.JwtExceptionCode;
 import com.example.teama.jwt.token.JwtAuthenticationToken;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -32,33 +31,37 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         String token="";
         try {
+            // 요청에서 토큰 추출
             token = getToken(request);
             if (StringUtils.hasText(token)) {
+                // 토큰을 이용하여 사용자 인증 수행
                 getAuthentication(token);
             }
+
+            // 다음 필터로 이동
             filterChain.doFilter(request, response);
         }
-        catch (NullPointerException | IllegalStateException e) {
+        catch (NullPointerException | IllegalStateException e) {    // 토큰이 없는 경우 예외 처리
             request.setAttribute("exception", JwtExceptionCode.NOT_FOUND_TOKEN.getCode());
             log.error("Not found Token // token : {}", token);
             log.error("Set Request Exception Code : {}", request.getAttribute("exception"));
             throw new BadCredentialsException("throw new not found token exception");
-        } catch (SecurityException | MalformedJwtException e) {
+        } catch (SecurityException | MalformedJwtException e) {     // 토큰이 유효하지 않은 경우 예외 처리
             request.setAttribute("exception", JwtExceptionCode.INVALID_TOKEN.getCode());
             log.error("Invalid Token // token : {}", token);
             log.error("Set Request Exception Code : {}", request.getAttribute("exception"));
             throw new BadCredentialsException("throw new invalid token exception");
-        } catch (ExpiredJwtException e) {
+        } catch (ExpiredJwtException e) {   // 토큰이 만료된 경우 예외 처리
             request.setAttribute("exception", JwtExceptionCode.EXPIRED_TOKEN.getCode());
             log.error("EXPIRED Token // token : {}", token);
             log.error("Set Request Exception Code : {}", request.getAttribute("exception"));
             throw new BadCredentialsException("throw new expired token exception");
-        } catch (UnsupportedJwtException e) {
+        } catch (UnsupportedJwtException e) {   // 지원하지 않는 토큰인 경우 예외 처리
             request.setAttribute("exception", JwtExceptionCode.UNSUPPORTED_TOKEN.getCode());
             log.error("Unsupported Token // token : {}", token);
             log.error("Set Request Exception Code : {}", request.getAttribute("exception"));
             throw new BadCredentialsException("throw new unsupported token exception");
-        } catch (Exception e) {
+        } catch (Exception e) {     // 그 외 예외 처리
             log.error("====================================================");
             log.error("JwtFilter - doFilterInternal() 오류 발생");
             log.error("token : {}", token);
@@ -71,7 +74,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
     }
 
-//    토큰을 이용해서 인가를 받는 과정
+    // 토큰을 이용하여 사용자를 인증하고, 인증 정보를 SecurityContext에 저장
     private void getAuthentication(String token) {
         JwtAuthenticationToken authenticationToken = new JwtAuthenticationToken(token);
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
@@ -80,6 +83,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authenticate); // 현재 요청에서 언제든지 인증정보를 꺼낼 수 있도록 해준다.
     }
 
+    // Authorization 헤더에서 토큰을 추출
     private String getToken(HttpServletRequest request) {
         String authorization = request.getHeader("Authorization");
         if (StringUtils.hasText(authorization) && authorization.startsWith("Bearer")){
