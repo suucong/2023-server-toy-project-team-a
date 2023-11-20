@@ -14,8 +14,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class JwtTokenizer {
-
+public class JwtTokenizer {     // JWT를 생성하고 검증하는데 사용되는 유틸리티 클래스
     private final byte[] accessSecret;
     private final byte[] refreshSecret;
 
@@ -27,29 +26,27 @@ public class JwtTokenizer {
         this.refreshSecret = refreshSecret.getBytes(StandardCharsets.UTF_8);
     }
 
-    /**
-     * AccessToken 생성
-     */
+    // AccessToken 생성
     public String createAccessToken(Long id, String email, String name, List<String> roles) {
         return createToken(id, email, name, roles, ACCESS_TOKEN_EXPIRE_COUNT, accessSecret);
     }
 
-    /**
-     * RefreshToken 생성
-     */
+    // RefreshToken 생성
     public String createRefreshToken(Long id, String email, String name, List<String> roles) {
         return createToken(id, email, name, roles, REFRESH_TOKEN_EXPIRE_COUNT, refreshSecret);
     }
 
-
+    // AccessToken 및 RefreshToken을 생성
     private String createToken(Long id, String email, String name, List<String> roles,
                                Long expire, byte[] secretKey) {
+        // 토큰의 클레임(클레임은 토큰에 담기는 정보)을 설정
         Claims claims = Jwts.claims().setSubject(email);
 
         claims.put("roles", roles);
         claims.put("id", id);
         claims.put("name", name);
 
+        // 위의 클레임을 기반으로 Token 생성
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date())
@@ -58,9 +55,7 @@ public class JwtTokenizer {
                 .compact();
     }
 
-    /**
-     * 토큰에서 유저 아이디 얻기
-     */
+    // Token에서 User Id 얻기
     public Long getUserIdFromToken(String token) {
         String[] tokenArr = token.split(" ");
         token = tokenArr[1];
@@ -68,15 +63,17 @@ public class JwtTokenizer {
         return Long.valueOf((Integer)claims.get("id"));
     }
 
+    // 주어진 AccessToken을 분석하고 해당하는 클레임을 반환
     public Claims parseAccessToken(String accessToken) {
         return parseToken(accessToken, accessSecret);
     }
 
+    // 주어진 RefreshToken을 분석하고 해당하는 클레임을 반환
     public Claims parseRefreshToken(String refreshToken) {
         return parseToken(refreshToken, refreshSecret);
     }
 
-
+    // 주어진 Token을 분석하고 해당하는 클레임을 반환
     public Claims parseToken(String token, byte[] secretKey) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey(secretKey))
@@ -88,6 +85,8 @@ public class JwtTokenizer {
     /**
      * @param secretKey - byte형식
      * @return Key 형식 시크릿 키
+     * 주어진 시크릿 키의 바이트 배열을 사용하여 서명 키를 생성
+     * JWT 라이브러리의 Keys.hmacShaKeyFor 메서드를 사용하여 서명 키를 생성
      */
     public static Key getSigningKey(byte[] secretKey) {
         return Keys.hmacShaKeyFor(secretKey);
